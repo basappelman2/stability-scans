@@ -18,7 +18,7 @@ jobs:
       - run: npm i -g lighthouse
       - name: Scan alle app-URL's (mobiel + desktop)
         run: |
-          URLS="https://recepten.basappelman.nl https://herinneringen.basappelman.nl https://huishouden.basappelman.nl https://kennisbank.basappelman.nl https://braindump.basappelman.nl https://kijktracker.basappelman.nl https://boekentracker.basappelman.nl https://gametracker.basappelman.nl https://letsplay.basappelman.nl"
+          URLS="https://recepten.basappelman.nl https://herinneringen.basappelman.nl https://huishouden.basappelman.nl https://kennisbank.basappelman.nl https://braindump.basappelman.nl https://kijktracker.basappelman.nl https://boekentracker.basappelman.nl https://gametracker.basappelman.nl https://letsplay.basappelman.nl https://socialize.basappelman.nl"
           TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
           EXTRACT='{performance:((.categories.performance.score//0)*100|round),accessibility:((.categories.accessibility.score//0)*100|round),best_practices:((.categories["best-practices"].score//0)*100|round),seo:((.categories.seo.score//0)*100|round),kb:(((.audits["total-byte-weight"].numericValue//0)/1024)|round)}'
           RESULTS='[]'
