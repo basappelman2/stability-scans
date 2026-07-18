@@ -1,7 +1,7 @@
 name: Lighthouse scans
 on:
   schedule:
-    - cron: '17 4 * * 1' # wekelijks, maandag 04:17 UTC
+    - cron: '17 4 * * *' # dagelijks 04:17 UTC
   workflow_dispatch:
 
 permissions:
@@ -16,27 +16,26 @@ jobs:
         with:
           node-version: 22
       - run: npm i -g lighthouse
-      - name: Scan alle app-URL's
+      - name: Scan alle app-URL's (mobiel + desktop)
         run: |
           URLS="https://recepten.basappelman.nl https://herinneringen.basappelman.nl https://huishouden.basappelman.nl https://kennisbank.basappelman.nl https://braindump.basappelman.nl https://kijktracker.basappelman.nl https://boekentracker.basappelman.nl https://gametracker.basappelman.nl https://letsplay.basappelman.nl"
           TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          EXTRACT='{performance:((.categories.performance.score//0)*100|round),accessibility:((.categories.accessibility.score//0)*100|round),best_practices:((.categories["best-practices"].score//0)*100|round),seo:((.categories.seo.score//0)*100|round),kb:(((.audits["total-byte-weight"].numericValue//0)/1024)|round)}'
           RESULTS='[]'
           for u in $URLS; do
-            if lighthouse "$u" --quiet --chrome-flags="--headless --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path=/tmp/lh.json; then
-              row=$(jq -c --arg u "$u" '{
-                url:$u,
-                performance:((.categories.performance.score // 0)*100|round),
-                accessibility:((.categories.accessibility.score // 0)*100|round),
-                best_practices:((.categories["best-practices"].score // 0)*100|round),
-                seo:((.categories.seo.score // 0)*100|round),
-                kb:(((.audits["total-byte-weight"].numericValue // 0)/1024)|round)
-              }' /tmp/lh.json)
-              RESULTS=$(echo "$RESULTS" | jq -c --argjson r "$row" '. + [$r]')
+            m='null'; d='null'
+            if lighthouse "$u" --quiet --chrome-flags="--headless --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path=/tmp/m.json; then
+              m=$(jq -c "$EXTRACT" /tmp/m.json)
             fi
+            if lighthouse "$u" --quiet --preset=desktop --chrome-flags="--headless --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --output=json --output-path=/tmp/d.json; then
+              d=$(jq -c "$EXTRACT" /tmp/d.json)
+            fi
+            row=$(jq -c -n --arg u "$u" --argjson m "$m" --argjson d "$d" '{url:$u, mobile:$m, desktop:$d}')
+            RESULTS=$(echo "$RESULTS" | jq -c --argjson r "$row" '. + [$r]')
           done
           mkdir -p scans
           HIST='[]'; [ -f scans/scores.json ] && HIST=$(cat scans/scores.json)
-          echo "$HIST" | jq --arg ts "$TS" --argjson res "$RESULTS" '. + [{ts:$ts, results:$res}] | .[-12:]' > scans/scores.json
+          echo "$HIST" | jq --arg ts "$TS" --argjson res "$RESULTS" '. + [{ts:$ts, results:$res}] | .[-90:]' > scans/scores.json
       - name: Commit resultaten
         run: |
           git config user.name "github-actions[bot]"
