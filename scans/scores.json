@@ -1031,5 +1031,180 @@
         }
       }
     ]
+  },
+  {
+    "ts": "2026-07-23T06:41:30Z",
+    "results": [
+      {
+        "url": "https://recepten.basappelman.nl",
+        "mobile": {
+          "performance": 62,
+          "accessibility": 94,
+          "best_practices": 100,
+          "seo": 91,
+          "kb": 255
+        },
+        "desktop": {
+          "performance": 100,
+          "accessibility": 94,
+          "best_practices": 100,
+          "seo": 91,
+          "kb": 255
+        }
+      },
+      {
+        "url": "https://herinneringen.basappelman.nl",
+        "mobile": {
+          "performance": 96,
+          "accessibility": 98,
+          "best_practices": 96,
+          "seo": 54,
+          "kb": 421
+        },
+        "desktop": {
+          "performance": 99,
+          "accessibility": 98,
+          "best_practices": 96,
+          "seo": 54,
+          "kb": 421
+        }
+      },
+      {
+        "url": "https://huishouden.basappelman.nl",
+        "mobile": {
+          "performance": 99,
+          "accessibility": 100,
+          "best_practices": 100,
+          "seo": 91,
+          "kb": 222
+        },
+        "desktop": {
+          "performance": 100,
+          "accessibility": 100,
+          "best_practices": 100,
+          "seo": 91,
+          "kb": 222
+        }
+      },
+      {
+        "url": "https://kennisbank.basappelman.nl",
+        "mobile": {
+          "performance": 100,
+          "accessibility": 100,
+          "best_practices": 100,
+          "seo": 91,
+          "kb": 199
+        },
+        "desktop": {
+          "performance": 100,
+          "accessibility": 100,
+          "best_practices": 100,
+          "seo": 91,
+          "kb": 199
+        }
+      },
+      {
+        "url": "https://braindump.basappelman.nl",
+        "mobile": {
+          "performance": 100,
+          "accessibility": 100,
+          "best_practices": 100,
+          "seo": 91,
+          "kb": 213
+        },
+        "desktop": {
+          "performance": 100,
+          "accessibility": 100,
+          "best_practices": 100,
+          "seo": 91,
+          "kb": 213
+        }
+      },
+      {
+        "url": "https://kijktracker.basappelman.nl",
+        "mobile": {
+          "performance": 100,
+          "accessibility": 98,
+          "best_practices": 100,
+          "seo": 100,
+          "kb": 266
+        },
+        "desktop": {
+          "performance": 100,
+          "accessibility": 98,
+          "best_practices": 100,
+          "seo": 100,
+          "kb": 266
+        }
+      },
+      {
+        "url": "https://boekentracker.basappelman.nl",
+        "mobile": {
+          "performance": 90,
+          "accessibility": 98,
+          "best_practices": 100,
+          "seo": 100,
+          "kb": 279
+        },
+        "desktop": {
+          "performance": 100,
+          "accessibility": 98,
+          "best_practices": 100,
+          "seo": 100,
+          "kb": 280
+        }
+      },
+      {
+        "url": "https://gametracker.basappelman.nl",
+        "mobile": {
+          "performance": 100,
+          "accessibility": 94,
+          "best_practices": 100,
+          "seo": 100,
+          "kb": 232
+        },
+        "desktop": {
+          "performance": 100,
+          "accessibility": 94,
+          "best_practices": 100,
+          "seo": 100,
+          "kb": 232
+        }
+      },
+      {
+        "url": "https://letsplay.basappelman.nl",
+        "mobile": {
+          "performance": 97,
+          "accessibility": 100,
+          "best_practices": 100,
+          "seo": 66,
+          "kb": 276
+        },
+        "desktop": {
+          "performance": 99,
+          "accessibility": 100,
+          "best_practices": 100,
+          "seo": 66,
+          "kb": 279
+        }
+      },
+      {
+        "url": "https://socialize.basappelman.nl",
+        "mobile": {
+          "performance": 100,
+          "accessibility": 95,
+          "best_practices": 96,
+          "seo": 91,
+          "kb": 219
+        },
+        "desktop": {
+          "performance": 100,
+          "accessibility": 95,
+          "best_practices": 96,
+          "seo": 91,
+          "kb": 219
+        }
+      }
+    ]
   }
 ]
